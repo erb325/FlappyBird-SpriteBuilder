@@ -9,18 +9,17 @@
 #import "MainScene.h"
 #import "Obstacle.h"
 
-@interface CGPointObject : NSObject{
+@interface CGPointObject : NSObject
+{
     CGPoint _ratio;
     CGPoint _offset;
-    CCNode *_unsafe_unretained _child;
+    CCNode *__unsafe_unretained _child; // weak ref
 }
-
-@property (nonatomic, readwrite) CGPoint ratio;
-@property (nonatomic, readwrite) offset;
-@property (nonatomic, readwrite, unsafe_unretained) CCNode *child;
-+(id) pointWithCGPoint: (CGPoint)point offset:(CGPoint)offset;
--(id) initWithCGPoint: (CGPoint) point offset:(CGPoint)offset;
-
+@property (nonatomic,readwrite) CGPoint ratio;
+@property (nonatomic,readwrite) CGPoint offset;
+@property (nonatomic,readwrite,unsafe_unretained) CCNode *child;
++(id) pointWithCGPoint:(CGPoint)point offset:(CGPoint)offset;
+-(id) initWithCGPoint:(CGPoint)point offset:(CGPoint)offset;
 @end
 
 @implementation MainScene {
@@ -30,12 +29,14 @@
     CCNode *_cloud2;
     CCNode *_bush1;
     CCNode *_bush2;
+    
+    CGPoint _cloudParallaxRatio;
+    CGPoint _bushParallaxRatio;
+    
     CCNode *_parallaxContainer;
-    
-    CGPoint *_cloudParallaxRatio;
-    CGPoint *_bushParallaxRatio;
-    
     CCParallaxNode *_parallaxBackground;
+    
+    
     
     NSArray *_grounds;
     NSArray *_clouds;
